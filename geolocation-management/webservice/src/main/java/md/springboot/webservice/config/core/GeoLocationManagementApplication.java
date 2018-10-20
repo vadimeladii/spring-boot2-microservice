@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by veladii on 20.10.2018
  */
 @SpringBootApplication(scanBasePackages = {"md.springboot.webservice"})
-public class ProductManagementApplication {
+public class GeoLocationManagementApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductManagementApplication.class, args);
+        SpringApplication.run(GeoLocationManagementApplication.class, args);
     }
 }

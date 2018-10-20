@@ -1,6 +1,6 @@
 package md.springboot.webservice.config.jersey;
 
-import md.springboot.webservice.controller.ProductTestController;
+import md.springboot.webservice.controller.GeoLocationTestController;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +18,6 @@ public class JerseyConfig extends ResourceConfig {
     }
 
     private void registerEndpoints() {
-        register(ProductTestController.class);
+        register(GeoLocationTestController.class);
     }
 }

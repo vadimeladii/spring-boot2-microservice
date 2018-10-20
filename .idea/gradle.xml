@@ -8,10 +8,21 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/geolocation-management" />
             <option value="$PROJECT_DIR$/product-management" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/geolocation-management" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/geolocation-management" />
+            <option value="$PROJECT_DIR$/geolocation-management/webservice" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
