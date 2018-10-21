@@ -1,0 +1,2 @@
+rootProject.name = 'tracking-management'
+include 'webservice'
