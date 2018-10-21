@@ -22,10 +22,11 @@ allprojects {
     }
 
     springBoot {
-        mainClassName = 'md.springboot.webservice.config.core.GeoLocationApplication'
+        mainClassName = 'md.springboot.webservice.config.core.UserManagementApplication'
     }
 
-    jar {enabled = true}
+    jar { enabled = true }
+
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
