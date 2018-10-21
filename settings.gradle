@@ -1,4 +1,13 @@
 rootProject.name = 'spring-boot2-microservice'
-include 'product-management'
-include 'geolocation-management'
-include 'user-management'
+
+include ':user-management'
+include ':user-management:webservice'
+
+include ':tracking-management'
+include ':tracking-management:webservice'
+
+include ':geolocation-management'
+include ':geolocation-management:webservice'
+
+include ':product-management'
+include ':product-management:webservice'

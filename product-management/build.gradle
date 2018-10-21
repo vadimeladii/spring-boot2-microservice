@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.6.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 allprojects {
@@ -26,7 +26,6 @@ allprojects {
     }
 
     jar { enabled = true }
-
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
