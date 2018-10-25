@@ -1,0 +1,37 @@
+sudo:
+  required
+
+services:
+  - docker
+
+language: java
+
+jdk:
+  - oraclejdk8
+
+install: gradle -p spring-boot2-microservice bootJar
+
+os:
+  - linux
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::7}
+
+branches:
+  only:
+    - master
+
+after_success:
+
+   #LOGIN
+  - docker login -u $D_USER -p $D_PASS
+
+   #TAG
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+
+   #PRODUCT MANAGEMENT
+  - export PRODUCT_MANAGEMENT=vadimeladii7/product-management
+  - docker build -t $PRODUCT_MANAGEMENT:$COMMIT ./product-management
+  - docker tag $PRODUCT_MANAGEMENT:$COMMIT $PRODUCT_MANAGEMENT:$TAG
+  - docker push $PRODUCT_MANAGEMENT
