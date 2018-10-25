@@ -11,3 +11,6 @@ include ':geolocation-management:webservice'
 
 include ':product-management'
 include ':product-management:webservice'
+include ':product-management:business'
+include ':product-management:repository'
+include ':product-management:common'

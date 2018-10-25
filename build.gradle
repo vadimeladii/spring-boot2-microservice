@@ -14,4 +14,10 @@ allprojects {
     targetCompatibility = 1.8
 }
 
-subprojects {}
+subprojects {
+    dependencies {
+//      Utility
+        compile group: 'com.google.guava', name: 'guava', version: '25.1-jre'
+        compileOnly('org.projectlombok:lombok')
+    }
+}

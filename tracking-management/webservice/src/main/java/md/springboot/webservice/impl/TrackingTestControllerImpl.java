@@ -1,4 +1,4 @@
-package md.springboot.webservice.controller.impl;
+package md.springboot.webservice.impl;
 
 import md.springboot.webservice.controller.TrackingTestController;
 import org.springframework.stereotype.Controller;

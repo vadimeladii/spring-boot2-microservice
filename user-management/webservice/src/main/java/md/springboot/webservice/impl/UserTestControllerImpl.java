@@ -1,4 +1,4 @@
-package md.springboot.webservice.controller.impl;
+package md.springboot.webservice.impl;
 
 import md.springboot.webservice.controller.UserTestController;
 import org.springframework.stereotype.Controller;
