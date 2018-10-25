@@ -1,6 +1,10 @@
 group 'md.springboot'
 version '0.0.1-SNAPSHOT'
 
+jar {
+    archiveName 'product-management-webservice.jar'
+}
+
 dependencies {
     compile project (":product-management:business")
     compile project (":product-management:common")
