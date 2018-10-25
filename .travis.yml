@@ -9,7 +9,7 @@ language: java
 jdk:
   - oraclejdk8
 
-install: gradle -p spring-boot2-microservice bootJar
+install: gradle -p bootJar
 
 os:
   - linux
