@@ -2,6 +2,9 @@ rootProject.name = 'spring-boot2-microservice'
 
 include ':user-management'
 include ':user-management:webservice'
+include ':user-management:business'
+include ':user-management:repository'
+include ':user-management:common'
 
 include ':tracking-management'
 include ':tracking-management:webservice'
