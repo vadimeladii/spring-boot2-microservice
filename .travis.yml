@@ -9,6 +9,8 @@ language: java
 jdk:
   - oraclejdk8
 
+install: gradle -p :product-management:webservice assemble
+
 os:
   - linux
 
