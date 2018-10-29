@@ -1,24 +1,50 @@
 version: '2'
 services:
-# POSTGRES
-    db:
+
+# POSTGRES PRODUCT
+    db_product:
         image: postgres:latest
         restart: always
         environment:
             POSTGRES_PASSWORD: postgres
+
 # PRODUCT MANAGEMENT APPLICATION
-    spring_boot:
+    product_management:
         image: vadimeladii7/product-management:latest
         ports:
-            - "8080:8080"
+            - "8082:8082"
         links:
-            - db
+            - db_product
         depends_on:
-            - db
+            - db_product
         environment:
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db_product:5432/postgres
             - SPRING_DATASOURCE_USERNAME=postgres
             - SPRING_DATASOURCE_PASSWORD=postgres
-            - SPRING_FLYWAY_URL=jdbc:postgresql://db:5432/postgres
+            - SPRING_FLYWAY_URL=jdbc:postgresql://db_product:5432/postgres
             - SPRING_FLYWAY_USER=postgres
             - SPRING_FLYWAY_PASSWORD=postgres
+
+# POSTGRES PRODUCT
+    db_user:
+        image: postgres:latest
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: postgres
+
+# USER MANAGEMENT APPLICATION
+    user_management:
+        image: vadimeladii7/user-management:latest
+        ports:
+        - "8081:8081"
+        links:
+        - db_user
+        depends_on:
+        - db_user
+        environment:
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://db_user:5432/postgres
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=postgres
+        - SPRING_FLYWAY_URL=jdbc:postgresql://db_user:5432/postgres
+        - SPRING_FLYWAY_USER=postgres
+        - SPRING_FLYWAY_PASSWORD=postgres

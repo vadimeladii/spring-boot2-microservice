@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CarViewConverter extends Converter<Car, CarView> {
+
     @Override
     protected CarView doForward(Car dto) {
         CarView view = new CarView();

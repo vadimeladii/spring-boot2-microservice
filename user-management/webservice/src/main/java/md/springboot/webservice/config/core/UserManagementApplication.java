@@ -2,11 +2,18 @@ package md.springboot.webservice.config.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Created by veladii on 21.10.2018
  */
-@SpringBootApplication(scanBasePackages = {"md.springboot.webservice"})
+@SpringBootApplication(scanBasePackages = {
+        "md.springboot.webservice",
+        "md.springboot.business",
+        "md.springboot.repository"})
+@EntityScan({"md.springboot.repository"})
+@EnableJpaRepositories({"md.springboot.repository"})
 public class UserManagementApplication {
 
     public static void main(String[] args) {

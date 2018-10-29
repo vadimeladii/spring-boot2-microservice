@@ -1,6 +1,6 @@
 package md.springboot.webservice.config.jersey;
 
-import md.springboot.webservice.controller.UserTestController;
+import md.springboot.webservice.UserController;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +18,6 @@ public class JerseyConfig extends ResourceConfig {
     }
 
     private void registerEndpoints() {
-        register(UserTestController.class);
+        register(UserController.class);
     }
 }

@@ -9,7 +9,7 @@ language: java
 jdk:
   - oraclejdk8
 
-install: gradle -p product-management/webservice assemble
+install: gradle -p product-management/webservice assemble & gradle -p user-management/webservice assemble
 
 os:
   - linux
@@ -35,3 +35,9 @@ after_success:
   - docker build -t $PRODUCT_MANAGEMENT:$COMMIT ./product-management
   - docker tag $PRODUCT_MANAGEMENT:$COMMIT $PRODUCT_MANAGEMENT:$TAG
   - docker push $PRODUCT_MANAGEMENT
+
+   #USER MANAGEMENT
+  - export USER_MANAGEMENT=vadimeladii7/user-management
+  - docker build -t $USER_MANAGEMENT:$COMMIT ./user-management
+  - docker tag $USER_MANAGEMENT:$COMMIT $USER_MANAGEMENT:$TAG
+  - docker push $USER_MANAGEMENT
