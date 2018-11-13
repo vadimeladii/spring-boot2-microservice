@@ -1,6 +1,15 @@
 version: '2'
 services:
 
+# EUREKA APPLICATION
+    eureka_app:
+        image: vadimeladii7/spring-boot2-microservice-eureka:latest
+        ports:
+        - "8761:8761"
+        environment:
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
+        - SERVER_PORT=8761
+
 # POSTGRES PRODUCT
     db_product:
         image: postgres:latest
@@ -10,13 +19,15 @@ services:
 
 # PRODUCT MANAGEMENT APPLICATION
     product_management:
-        image: vadimeladii7/product-management:latest
+        image: vadimeladii7/spring-boot2-microservice-product-management:latest
         ports:
             - "8082:8082"
         links:
             - db_product
+            - eureka_app
         depends_on:
             - db_product
+            - eureka_app
         environment:
             - SPRING_DATASOURCE_URL=jdbc:postgresql://db_product:5432/postgres
             - SPRING_DATASOURCE_USERNAME=postgres
@@ -24,8 +35,10 @@ services:
             - SPRING_FLYWAY_URL=jdbc:postgresql://db_product:5432/postgres
             - SPRING_FLYWAY_USER=postgres
             - SPRING_FLYWAY_PASSWORD=postgres
+            - SERVER_PORT=8082
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
 
-# POSTGRES USER
+    # POSTGRES USER
     db_user:
         image: postgres:latest
         restart: always
@@ -34,13 +47,15 @@ services:
 
 # USER MANAGEMENT APPLICATION
     user_management:
-        image: vadimeladii7/user-management:latest
+        image: vadimeladii7/spring-boot2-microservice-user-management:latest
         ports:
         - "8081:8081"
         links:
         - db_user
+        - eureka_app
         depends_on:
         - db_user
+        - eureka_app
         environment:
         - SPRING_DATASOURCE_URL=jdbc:postgresql://db_user:5432/postgres
         - SPRING_DATASOURCE_USERNAME=postgres
@@ -48,3 +63,5 @@ services:
         - SPRING_FLYWAY_URL=jdbc:postgresql://db_user:5432/postgres
         - SPRING_FLYWAY_USER=postgres
         - SPRING_FLYWAY_PASSWORD=postgres
+        - SERVER_PORT=8081
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
