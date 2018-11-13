@@ -9,7 +9,7 @@ language: java
 jdk:
   - oraclejdk8
 
-install: gradle -p product-management/webservice assemble & gradle -p user-management/webservice assemble & gradle -p eureka assemble
+install: ./gradlew -p product-management/webservice assemble & ./gradlew -p user-management/webservice assemble & ./gradlew -p eureka assemble
 
 os:
   - linux
