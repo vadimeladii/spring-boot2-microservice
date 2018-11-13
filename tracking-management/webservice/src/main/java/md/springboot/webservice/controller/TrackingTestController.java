@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by veladii on 21.10.2018
  */
-@Path("/user")
+@Path("/tracking")
 public interface TrackingTestController {
 
     @GET

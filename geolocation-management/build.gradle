@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.6.RELEASE'
+            springBootVersion = '2.1.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -35,6 +35,8 @@ subprojects {
     dependencies {
         implementation('org.springframework.boot:spring-boot-starter-jersey')
         implementation('org.springframework.boot:spring-boot-starter-web')
+        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.2.RELEASE'
+
         testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
 }
