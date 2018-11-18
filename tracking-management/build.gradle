@@ -35,7 +35,10 @@ subprojects {
     dependencies {
         implementation('org.springframework.boot:spring-boot-starter-jersey')
         implementation('org.springframework.boot:spring-boot-starter-web')
-        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.2.RELEASE'
+        compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.2.RELEASE')  {
+            exclude group: "javax.ws.rs", module: "jsr311-api"
+        }
+
 
         testImplementation('org.springframework.boot:spring-boot-starter-test')
     }

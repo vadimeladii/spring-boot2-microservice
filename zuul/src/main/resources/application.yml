@@ -1,0 +1,36 @@
+spring:
+  # Spring configuration
+  main:
+    allow-bean-definition-overriding: true
+
+
+# Server configuration
+server:
+  port: 8762
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# Zuul configuration
+zuul:
+  ignored-services: '*'
+  routes:
+
+    product-management:
+      path: /product-management/**
+      service-id: product-management
+
+    user-management:
+      path: /user-management/**
+      service-id: user-management
+
+    tracking-management:
+      path: /tracking-management/**
+      service-id: tracking-management
+
+    geolocation-management:
+      path: /geolocation-management/**
+      service-id: geolocation-management
