@@ -19,6 +19,7 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven { url "https://repo.spring.io/milestone" }
     }
 
     springBoot {
@@ -26,7 +27,6 @@ allprojects {
     }
 
     jar { enabled = true }
-
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8

@@ -3,7 +3,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-
 # Server configuration
 server:
   port: 8762

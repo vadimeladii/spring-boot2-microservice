@@ -9,7 +9,7 @@ language: java
 jdk:
   - oraclejdk8
 
-install: ./gradlew -p product-management/webservice assemble & ./gradlew -p user-management/webservice assemble & ./gradlew -p eureka assemble
+install: ./gradlew -p product-management/webservice assemble & ./gradlew -p user-management/webservice assemble & ./gradlew -p tracking-management/webservice assemble & ./gradlew -p geolocation-management/webservice assemble & ./gradlew -p eureka assemble & ./gradlew -p zuul assemble
 
 os:
   - linux
@@ -42,8 +42,26 @@ after_success:
   - docker tag $USER_MANAGEMENT:$COMMIT $USER_MANAGEMENT:$TAG
   - docker push $USER_MANAGEMENT
 
+   #TRACKING MANAGEMENT
+  - export TRACKING_MANAGEMENT=vadimeladii7/spring-boot2-microservice-tracking-management
+  - docker build -t $TRACKING_MANAGEMENT:$COMMIT ./tracking-management
+  - docker tag $TRACKING_MANAGEMENT:$COMMIT $TRACKING_MANAGEMENT:$TAG
+  - docker push $TRACKING_MANAGEMENT
+
+   #GEOLOCATION MANAGEMENT
+  - export GEOLOCATION_MANAGEMENT=vadimeladii7/spring-boot2-microservice-geolocation-management
+  - docker build -t $GEOLOCATION_MANAGEMENT:$COMMIT ./geolocation-management
+  - docker tag $GEOLOCATION_MANAGEMENT:$COMMIT $GEOLOCATION_MANAGEMENT:$TAG
+  - docker push $GEOLOCATION_MANAGEMENT
+
    #EUREKA
   - export EUREKA=vadimeladii7/spring-boot2-microservice-eureka
   - docker build -t $EUREKA:$COMMIT ./eureka
   - docker tag $EUREKA:$COMMIT $EUREKA:$TAG
   - docker push $EUREKA
+
+  #ZUUL
+  - export ZUUL=vadimeladii7/spring-boot2-microservice-zuul
+  - docker build -t $ZUUL:$COMMIT ./zuul
+  - docker tag $ZUUL:$COMMIT $ZUUL:$TAG
+  - docker push $ZUUL
