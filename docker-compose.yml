@@ -10,6 +10,19 @@ services:
         - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
         - SERVER_PORT=8761
 
+# ZUUL APPLICATION
+    zuul-app:
+        image: vadimeladii7/spring-boot2-microservice-zuul:latest
+        ports:
+        - 8762:8762
+        links:
+        - eureka-app
+        depends_on:
+        - eureka-app
+        environment:
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
+        - SERVER_PORT=8762
+
 # POSTGRES PRODUCT
     db-product:
         image: postgres:latest
@@ -64,4 +77,30 @@ services:
         - SPRING_FLYWAY_USER=postgres
         - SPRING_FLYWAY_PASSWORD=postgres
         - SERVER_PORT=8081
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
+
+# TRACKING MANAGEMENT APPLICATION
+    user-management:
+        image: vadimeladii7/spring-boot2-microservice-tracking-management:latest
+        ports:
+        - 8083:8083
+        links:
+        - eureka-app
+        depends_on:
+        - eureka-app
+        environment:
+        - SERVER_PORT=8083
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
+
+# GEOLOCATION MANAGEMENT APPLICATION
+    geolocation-management:
+        image: vadimeladii7/spring-boot2-microservice-geolocation-management:latest
+        ports:
+        - 8084:8084
+        links:
+        - eureka-app
+        depends_on:
+        - eureka-app
+        environment:
+        - SERVER_PORT=8084
         - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
