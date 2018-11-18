@@ -1,11 +1,11 @@
-# Spring configuration
 spring:
+  # Spring configuration
   main:
     allow-bean-definition-overriding: true
 
 # Server configuration
 server:
-  port: 0
+  port: 8083
 
 # Eureka configuration
 eureka:

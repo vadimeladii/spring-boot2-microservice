@@ -24,7 +24,7 @@ spring:
 
 # Server configuration
 server:
-  port: 0
+  port: 8081
 
 # Eureka configuration
 eureka:

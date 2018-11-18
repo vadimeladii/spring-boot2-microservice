@@ -2,66 +2,66 @@ version: '2'
 services:
 
 # EUREKA APPLICATION
-    eureka_app:
+    eureka-app:
         image: vadimeladii7/spring-boot2-microservice-eureka:latest
         ports:
-        - "8761:8761"
+        - 8761:8761
         environment:
-        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
         - SERVER_PORT=8761
 
 # POSTGRES PRODUCT
-    db_product:
+    db-product:
         image: postgres:latest
         restart: always
         environment:
             POSTGRES_PASSWORD: postgres
 
 # PRODUCT MANAGEMENT APPLICATION
-    product_management:
+    product-management:
         image: vadimeladii7/spring-boot2-microservice-product-management:latest
         ports:
-            - "8082:8082"
+            - 8082:8082
         links:
-            - db_product
-            - eureka_app
+            - db-product
+            - eureka-app
         depends_on:
-            - db_product
-            - eureka_app
+            - db-product
+            - eureka-app
         environment:
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://db_product:5432/postgres
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db-product:5432/postgres
             - SPRING_DATASOURCE_USERNAME=postgres
             - SPRING_DATASOURCE_PASSWORD=postgres
-            - SPRING_FLYWAY_URL=jdbc:postgresql://db_product:5432/postgres
+            - SPRING_FLYWAY_URL=jdbc:postgresql://db-product:5432/postgres
             - SPRING_FLYWAY_USER=postgres
             - SPRING_FLYWAY_PASSWORD=postgres
             - SERVER_PORT=8082
-            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/
 
     # POSTGRES USER
-    db_user:
+    db-user:
         image: postgres:latest
         restart: always
         environment:
             POSTGRES_PASSWORD: postgres
 
 # USER MANAGEMENT APPLICATION
-    user_management:
+    user-management:
         image: vadimeladii7/spring-boot2-microservice-user-management:latest
         ports:
-        - "8081:8081"
+        - 8081:8081
         links:
-        - db_user
-        - eureka_app
+        - db-user
+        - eureka-app
         depends_on:
-        - db_user
-        - eureka_app
+        - db-user
+        - eureka-app
         environment:
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://db_user:5432/postgres
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://db-user:5432/postgres
         - SPRING_DATASOURCE_USERNAME=postgres
         - SPRING_DATASOURCE_PASSWORD=postgres
-        - SPRING_FLYWAY_URL=jdbc:postgresql://db_user:5432/postgres
+        - SPRING_FLYWAY_URL=jdbc:postgresql://db-user:5432/postgres
         - SPRING_FLYWAY_USER=postgres
         - SPRING_FLYWAY_PASSWORD=postgres
         - SERVER_PORT=8081
-        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka_app:8761/eureka/
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-app:8761/eureka/

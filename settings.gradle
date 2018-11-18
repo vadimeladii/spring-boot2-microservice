@@ -19,3 +19,5 @@ include ':product-management:repository'
 include ':product-management:common'
 
 include ':eureka'
+
+include ':zuul'
