@@ -40,7 +40,6 @@ subprojects {
             exclude group: "javax.ws.rs", module: "jsr311-api"
         }
 
-
         testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
 }
