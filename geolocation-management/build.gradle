@@ -23,7 +23,7 @@ allprojects {
     }
 
     springBoot {
-        mainClassName = 'md.springboot.webservice.config.core.GeoLocationApplication'
+        mainClassName = 'md.springboot.webservice.config.core.GeoLocationManagementApplication'
     }
 
     jar {enabled = true}
