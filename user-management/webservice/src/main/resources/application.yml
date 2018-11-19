@@ -24,7 +24,7 @@ spring:
 
 # Server configuration
 server:
-  port: 8081
+  port: ${random.int[8000,8200]}
 
 # Eureka configuration
 eureka:
