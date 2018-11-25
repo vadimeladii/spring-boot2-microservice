@@ -21,28 +21,16 @@ zuul:
     product-management:
       path: /product-management/**
       service-id: product-management
-      ribbon:
-        eureka:
-          enabled: false
 
     user-management:
       path: /user-management/**
       service-id: user-management
-      ribbon:
-        eureka:
-          enabled: false
 
     tracking-management:
       path: /tracking-management/**
       service-id: tracking-management
-      ribbon:
-        eureka:
-          enabled: false
 
     geolocation-management:
       path: /geolocation-management/**
       service-id: geolocation-management
-      ribbon:
-        eureka:
-          enabled: false
 
