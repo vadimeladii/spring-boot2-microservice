@@ -21,3 +21,5 @@ include ':product-management:common'
 include ':eureka'
 
 include ':zuul'
+
+include ':authentication'

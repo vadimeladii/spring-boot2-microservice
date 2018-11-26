@@ -34,3 +34,9 @@ zuul:
       path: /geolocation-management/**
       service-id: geolocation-management
 
+    authentication:
+      path: /auth/**
+      service-id: authentication
+      strip-prefix: false
+      sensitive-headers: Cookie,Set-Cookie
+

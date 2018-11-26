@@ -1,0 +1,14 @@
+spring:
+  # Spring configuration
+  main:
+    allow-bean-definition-overriding: true
+
+# Server configuration
+server:
+  port: 9100
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
